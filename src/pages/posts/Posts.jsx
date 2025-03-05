@@ -1,17 +1,22 @@
 //compoennts
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+// import { useState, useEffect } from 'react';
+// import axios from 'axios';
 import { NavLink } from 'react-router-dom';
 
-const Post = () => {
-  const [posts, setPosts] = useState([]);
+import { useEffect } from "react"
+import { useGlobalContext } from '../../context/GlobalContext';
 
+const Post = () => {
+  // const [posts, setPosts] = useState([]);
+  const { posts, fechData } = useGlobalContext()
 
 
   useEffect(() => {
     axios
-      .get('http://localhost:3000/posts')
-      .then((res) => setPosts(res.data));
+    // .get('http://localhost:3000/posts')
+    // .then((res) => setPosts(res.data));
+
+    fechData()
   }, []);
 
   return (

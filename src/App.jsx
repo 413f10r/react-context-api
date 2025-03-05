@@ -10,19 +10,27 @@ import Posts from './pages/posts/Posts';
 import DefaultLayout from "./layouts/DefaultLayout";
 import SinglePost from './pages/posts/SinglePost';
 
+//context
+import { GlobalProvider } from './context/GlobalContext';
+
 
 function App() {
+
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route Component={DefaultLayout}>
-          <Route path="/" Component={HomePage} />
-          <Route path="/contact" Component={ContactPage} />
-          <Route path="/posts" Component={Posts} />
-          <Route path="/posts/:id" Component={SinglePost} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <>
+      <GlobalProvider>
+        <BrowserRouter>
+          <Routes>
+            <Route Component={DefaultLayout}>
+              <Route path="/" Component={HomePage} />
+              <Route path="/contact" Component={ContactPage} />
+              <Route path="/posts" Component={Posts} />
+              <Route path="/posts/:id" Component={SinglePost} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </GlobalProvider>
+    </>
   );
 }
 
